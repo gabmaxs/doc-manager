@@ -10,15 +10,12 @@
     <meta name="description" content="Bootstrap Documentation Template For Software Developers">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
     <link rel="shortcut icon" href="favicon.ico"> 
-    
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
-    
+
     <!-- FontAwesome JS-->
-    <script defer src="{{ asset('template/fontawesome/js/all.min.js') }}"></script>
+    <script defer src="{{ asset('js/fontawesome.js') }}"></script>
 
     <!-- Theme CSS -->  
-    <link id="theme-style" rel="stylesheet" href="{{ asset('template/css/theme.css') }}">
+    <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
 
 </head> 
 
@@ -32,7 +29,7 @@
 	                    <span></span>
 	                    <span></span>
 	                </button>
-	                <div class="site-logo"><a class="navbar-brand" href="index.html"><img class="logo-icon mr-2" src="{{('template/images/coderdocs-logo.svg')}}" alt="logo"><span class="logo-text">Dynac<span class="text-alt">curate</span></span></a></div>    
+	                <div class="site-logo"><a class="navbar-brand" href="index.html"><img class="logo-icon mr-2" src="{{('images/coderdocs-logo.svg')}}" alt="logo"><span class="logo-text">Dynac<span class="text-alt">curate</span></span></a></div>    
                 </div><!--//docs-logo-wrapper-->
 	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
 	                <div class="top-search-box d-none d-lg-flex">
@@ -80,17 +77,15 @@
     </footer>
 
     
-    <!-- Javascript -->          
-    <script src="{{ asset('template/plugins/jquery-3.4.1.min.js')}}"></script>
-    <script src="{{ asset('template/plugins/popper.min.js') }}"></script>
-    <script src="{{ asset('template/plugins/bootstrap/js/bootstrap.min.js') }}"></script>  
+    <!-- Javascript -->   
+    <script src="{{ asset('js/app.js') }}"></script> 
 
      <!-- Page Specific JS -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
-     <script src="{{ asset('template/js/highlight-custom.js') }}"></script> 
-     <script src="{{ asset('template/plugins/jquery.scrollTo.min.js') }}"></script>
-     <script src="{{ asset('template//plugins/lightbox/dist/ekko-lightbox.min.js') }}"></script> 
-     <script src="{{ asset('template//js/docs.js') }}"></script> 
+     <script src="{{ asset('js/highlight-custom.js') }}"></script> 
+     <script src="{{ asset('js/jquery.scrollTo.min.js') }}"></script>
+     <script src="{{ asset('js/ekko-lightbox.min.js') }}"></script> 
+     <script src="{{ asset('js/theme.js') }}"></script> 
     
     @yield("script")
 
