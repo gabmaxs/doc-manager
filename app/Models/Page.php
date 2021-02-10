@@ -22,4 +22,8 @@ class Page extends Model
     public function getHtmlIdAttribute() {
         return strtolower(str_replace(" ","-",$this->name));
     }
+
+    public function scopeDefault($query) {
+        return $query->first();
+    }
 }
