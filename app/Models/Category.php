@@ -22,4 +22,8 @@ class Category extends Model
     public function getFirstPageAttribute() {
         return $this->pages()->first();
     }
+
+    public function scopeDefault($query) {
+        return $query->first();
+    }
 }
