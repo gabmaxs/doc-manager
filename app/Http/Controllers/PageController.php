@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Version;
+use App\Models\Page;
 
 class PageController extends Controller
 {
@@ -16,7 +17,17 @@ class PageController extends Controller
         ]);
     }
 
-    function docs(Version $version) {
-        dd($version);
+    function docs(Request $request, Version $version, Page $page) {
+        $versions = Version::where('is_active', 1)->get();
+        $categories = $version->categories()->get();
+
+        if(!$page->id) $page = Page::default();
+        $sections = $page->sections()->get();
+        
+        return view("docs", [
+            "versions" => $versions,
+            "categories" => $categories,
+            "sections" => $sections
+        ]);
     }
 }
