@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\PageController::class, "welcome"])->name("welcome");
 
-Route::get('/docs/{version}/{page?}', [App\Http\Controllers\PageController::class, 'docs'])->name('docs');
+Route::get('/docs/{version}/{category?}', [App\Http\Controllers\PageController::class, 'docs'])->name('docs');
 
 Auth::routes();
 
