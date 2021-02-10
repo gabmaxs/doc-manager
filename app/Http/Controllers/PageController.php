@@ -27,7 +27,9 @@ class PageController extends Controller
         return view("docs", [
             "versions" => $versions,
             "categories" => $categories,
-            "sections" => $sections
+            "sections" => $sections,
+            "page" => $page,
+            "currentVersion" => $version
         ]);
     }
 }
