@@ -18,4 +18,8 @@ class Page extends Model
     public function categories() {
         return $this->belongsToMany(Category::class);
     }
+
+    public function getHtmlIdAttribute() {
+        return strtolower(str_replace(" ","-",$this->name));
+    }
 }

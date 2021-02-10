@@ -14,4 +14,8 @@ class Category extends Model
     public function pages() {
         return $this->belongsToMany(Page::class);
     }
+
+    public function getHtmlIdAttribute() {
+        return strtolower(str_replace(" ","-",$this->name));
+    }
 }
