@@ -11,9 +11,14 @@ class PageController extends Controller
     function welcome() {
         $currentVersion = Version::last();
         $categories = $currentVersion->categories()->get();
+        
+        $versions = Version::where('is_active', 1)->get();
+
         return view("welcome", [
+            "versions" => $versions,
             "categories" => $categories,
-            "versionId" => $currentVersion->id
+            "versionId" => $currentVersion->id,
+            "currentVersion" => $currentVersion
         ]);
     }
 

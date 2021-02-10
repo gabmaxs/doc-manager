@@ -29,7 +29,7 @@
 	                    <span></span>
 	                    <span></span>
 	                </button>
-	                <div class="site-logo"><a class="navbar-brand" href="index.html"><img class="logo-icon mr-2" src="{{('images/coderdocs-logo.svg')}}" alt="logo"><span class="logo-text">Dynac<span class="text-alt">curate</span></span></a></div>    
+	                <div class="site-logo"><a class="navbar-brand" href="index.html"><img class="logo-icon mr-2" style="width: auto; height: 60px" src="{{ asset('images/public_avatar.jpeg')}}" alt="logo"><span class="logo-text">Dynac<span class="text-alt">curate</span></span></a></div>    
                 </div><!--//docs-logo-wrapper-->
 	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
 	                <div class="top-search-box d-none d-lg-flex">
