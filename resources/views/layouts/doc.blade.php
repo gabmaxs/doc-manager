@@ -47,14 +47,14 @@
 		            </ul><!--//social-list-->
                     <div class="dropdown">
   <a class="btn btn-primary dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    3.x
+    {{ $currentVersion->name }}
     </a>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
       
     <h6 class="dropdown-header">Versions</h6>
-    <a class="dropdown-item" href="#">1.0</a>
-    <a class="dropdown-item" href="#">1.6</a>
-    <a class="dropdown-item" href="#">2.0</a>
+    @foreach ($versions as $version)
+        <a class="dropdown-item" href="{{ route('docs',['version' => $version->id]) }}">{{ $version->name }}</a>        
+    @endforeach
   </div>
 </div>
 	            </div><!--//docs-top-utilities-->
