@@ -11,7 +11,12 @@ class PageController extends Controller
         $currentVersion = Version::last();
         $categories = $currentVersion->categories()->get();
         return view("welcome", [
-            "categories" => $categories
+            "categories" => $categories,
+            "versionId" => $currentVersion->id
         ]);
+    }
+
+    function docs(Version $version) {
+        dd($version);
     }
 }
