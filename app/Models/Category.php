@@ -18,4 +18,8 @@ class Category extends Model
     public function getHtmlIdAttribute() {
         return strtolower(str_replace(" ","-",$this->name));
     }
+
+    public function getFirstPageAttribute() {
+        return $this->pages()->first();
+    }
 }
