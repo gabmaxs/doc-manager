@@ -45,7 +45,18 @@
 		                <li class="list-inline-item"><a href="#"><i class="fab fa-slack fa-fw"></i></a></li>
 		                <li class="list-inline-item"><a href="#"><i class="fab fa-product-hunt fa-fw"></i></a></li>
 		            </ul><!--//social-list-->
-		            <a href="https://themes.3rdwavemedia.com/bootstrap-templates/startup/coderdocs-free-bootstrap-4-documentation-template-for-software-projects/" class="btn btn-primary d-none d-lg-flex">Download</a>
+                    <div class="dropdown">
+  <a class="btn btn-primary dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    3.x
+    </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      
+    <h6 class="dropdown-header">Versions</h6>
+    <a class="dropdown-item" href="#">1.0</a>
+    <a class="dropdown-item" href="#">1.6</a>
+    <a class="dropdown-item" href="#">2.0</a>
+  </div>
+</div>
 	            </div><!--//docs-top-utilities-->
             </div><!--//container-->
         </div><!--//branding-->
