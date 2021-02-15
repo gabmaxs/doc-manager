@@ -18,6 +18,7 @@ class PageController extends Controller
         $categories = $currentVersion->categories()->get();
         $versions = Version::where('is_active', 1)->get();
         return view("welcome", [
+            "versions" => $versions,
             "categories" => $categories,
             "currentVersion" => $currentVersion,
             "versions" => $versions
