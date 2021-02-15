@@ -1,0 +1,70 @@
+<template>
+    <section class="docs-section" :id="section.htmlId">
+        <h2 v-if="!wantEditName" @click="wantEditName = true" class="section-heading">{{ section.name }}</h2>
+        <form v-if="wantEditName">
+            <div class="form-group">
+                <input type="text" :value="section.name" @change="(e)=> newName = e.target.value" class="form-control input-lg">
+            </div>
+            <button @click.prevent="saveName" class="btn btn-primary">Salvar</button>
+            <button @click.prevent="wantEditName = false" class="btn btn-danger">Cancelar</button>
+        </form>
+        <p v-if="!wantEditContent" @click="wantEditContent = true">{{ section.content }}</p>
+        <form v-if="wantEditContent">
+            <div class="form-group">
+                <textarea rows="20" class="form-control" @change="(e)=> newContent = e.target.value" :value="section.content"></textarea>
+            </div>
+            <button @click.prevent="saveContent" class="btn btn-primary">Salvar</button>
+            <button @click.prevent="wantEditContent = false" class="btn btn-danger">Cancelar</button>
+        </form>
+    </section><!--//section-->
+</template>
+
+<script>
+    import axios from "axios"
+    export default {
+        name: "SectionComponent",
+        props: ["sectionValue"],
+        data() {
+            return {
+                section: {},
+                wantEditContent: false,
+                newContent: "",
+                wantEditName: false,
+                newName: ""
+            }
+        },
+        methods: {
+            saveContent() {
+                this.section.content = this.newContent
+                this.sendRequest()
+            },
+            saveName() {
+                this.section.name = this.newName
+                this.sendRequest()
+            },
+            async sendRequest() {
+                try {
+                    const response = await axios.put(`/section/${this.section.id}`,
+                        JSON.stringify(this.section),
+                        {
+                            headers: {
+                                "Content-Type": "application/json"
+                            }
+                        }
+                    )
+                    this.wantEditName = false
+                    this.wantEditContent = false
+                    this.section = response.data
+                }
+                catch(e) {
+                    console.log("Error")
+                    console.log(e)
+                }
+            }
+        },
+        created() {
+            const sectionObj = JSON.parse(this.sectionValue)
+            this.section = sectionObj
+        },
+    }
+</script>

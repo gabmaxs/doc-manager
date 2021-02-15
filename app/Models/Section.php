@@ -11,6 +11,8 @@ class Section extends Model
 
     protected $fillable = ["name", "content"];
 
+    protected $appends = ["htmlId"];
+
     public function versions() {
         return $this->belongsToMany(Version::class);
     }

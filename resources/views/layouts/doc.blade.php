@@ -46,23 +46,22 @@
 		                <li class="list-inline-item"><a href="#"><i class="fab fa-product-hunt fa-fw"></i></a></li>
 		            </ul><!--//social-list-->
                     <div class="dropdown">
-  <a class="btn btn-primary dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    {{ $currentVersion->name }}
-    </a>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      
-    <h6 class="dropdown-header">Versions</h6>
-    @foreach ($versions as $version)
-        <a class="dropdown-item" href="{{ route('docs',['version' => $version->id]) }}">{{ substr($version->name,1) }}</a>        
-    @endforeach
-  </div>
-</div>
+                        <a class="btn btn-primary dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ $currentVersion->name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <h6 class="dropdown-header">Versions</h6>
+                            @foreach ($versions as $version)
+                                <a class="dropdown-item" href="{{ route('docs',['version' => $version->id]) }}">{{ substr($version->name,1) }}</a>        
+                            @endforeach
+                        </div>
+                    </div>
 	            </div><!--//docs-top-utilities-->
             </div><!--//container-->
         </div><!--//branding-->
     </header><!--//header-->
 
-    <main>
+    <main id="app">
         @yield('content')
     </main>
 
