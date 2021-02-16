@@ -13,6 +13,14 @@ class PageController extends Controller
         $this->middleware("auth")->only("edit");
     }
 
+    function redirect(Request $request, Version $version) {
+        $category = Category::default();
+        return redirect()->route('docs',[
+            'version' => $version,
+            'category' => $category
+        ]);
+    }
+
     function welcome() {
         $currentVersion = Version::last();
         $categories = $currentVersion->categories()->get();
@@ -28,9 +36,7 @@ class PageController extends Controller
     function docs(Request $request, Version $version, Category $category) {
         $versions = Version::where('is_active', 1)->get();
         $categories = $version->categories()->get();
-        
-        if(!$category->id) $category = Category::default();
-        
+                
         return view("docs", [
             "versions" => $versions,
             "categories" => $categories,
@@ -42,9 +48,7 @@ class PageController extends Controller
     function edit(Request $request, Version $version, Category $category) {
         $versions = Version::where('is_active', 1)->get();
         $categories = $version->categories()->get();
-        
-        if(!$category->id) $category = Category::default();
-        
+                
         return view("edit", [
             "versions" => $versions,
             "categories" => $categories,

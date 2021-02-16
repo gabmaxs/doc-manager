@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\PageController::class, "welcome"])->name("welcome");
 
-Route::get('/docs/{version}/{category?}', [App\Http\Controllers\PageController::class, 'docs'])->name('docs');
-Route::get('/docs/{version}/{category?}/edit', [App\Http\Controllers\PageController::class, 'edit'])->name('edit');
+Route::get('/docs/{version}', [App\Http\Controllers\PageController::class, 'redirect'])->name('redirect');
+
+Route::get('/docs/{version}/{category}', [App\Http\Controllers\PageController::class, 'docs'])->name('docs');
+Route::get('/docs/{version}/{category}/edit', [App\Http\Controllers\PageController::class, 'edit'])->name('edit');
 
 
 Route::put('/section/{section}', [App\Http\Controllers\EditController::class, 'editSection']);
