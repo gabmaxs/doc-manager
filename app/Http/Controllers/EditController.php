@@ -24,4 +24,14 @@ class EditController extends Controller
         $page->save();
         return response()->json($page);
     }
+
+    public function editSectionsSequence(Request $request, Page $page) {
+        $sections = $request->only('sections')['sections'];
+        foreach($sections as $key => $section) {
+            $page->sections()->updateExistingPivot($section['id'], [
+                'sequence' => $key+1,
+            ]);
+        }
+        return response()->json()->setStatusCode(204);
+    }
 }

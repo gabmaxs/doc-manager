@@ -23,10 +23,9 @@
     import axios from "axios"
     export default {
         name: "SectionComponent",
-        props: ["sectionValue"],
+        props: ["section"],
         data() {
             return {
-                section: {},
                 wantEditContent: false,
                 newContent: "",
                 wantEditName: false,
@@ -61,10 +60,6 @@
                     console.log(e)
                 }
             }
-        },
-        created() {
-            const sectionObj = JSON.parse(this.sectionValue)
-            this.section = sectionObj
-        },
+        }
     }
 </script>
