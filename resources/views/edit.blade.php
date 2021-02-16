@@ -32,7 +32,10 @@
                     <section-panel-component page="{{ $page->id }}" section-list="{{ $page->sections }}"></section-panel-component>
                 </page-component>
             @endforeach
+            <div class="btn-block d-flex justify-content-center align-items-center add-section">New Section<i class="fas fa-plus ml-3"></i></button>
+
         </div> 
+        
     </div>
 </div><!--//docs-wrapper-->
 @endsection
