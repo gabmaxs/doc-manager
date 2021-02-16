@@ -14,6 +14,8 @@ class PageController extends Controller
     }
 
     function redirect(Request $request, Version $version) {
+        if(!$version->id)   $version = Version::last();
+
         $category = Category::default();
         return redirect()->route('docs',[
             'version' => $version,

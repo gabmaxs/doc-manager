@@ -11,12 +11,12 @@
         <nav id="docs-nav" class="docs-nav navbar">
             <ul class="section-items list-unstyled nav flex-column pb-3">
                 @foreach ($categories as $category)
-                    <li class="nav-item section-title"><a class="nav-link" href="{{ route('docs',['version' => $currentVersion, 'category' => $category->id]) }}"><span class="theme-icon-holder mr-2"><i class="fas fa-map-signs"></i></span>{{$category->name}}</a></li>
+                    <li class="nav-item section-title"><a class="nav-link" href="{{ route('docs',['version' => $currentVersion, 'category' => $category]) }}"><span class="theme-icon-holder mr-2"><i class="fas fa-map-signs"></i></span>{{$category->name}}</a></li>
                     @foreach ($category->pages as $pageMenu)
                         @if ($category->is($selectedCategory))
                             <li class="nav-item"><a class="nav-link scrollto" href="#{{ $pageMenu->title }}">{{$pageMenu->name}}</a></li>
                         @else
-                            <li class="nav-item"><a class="nav-link" href="{{ route('docs',['version' => $currentVersion, 'category' => $category->id]) . "#$pageMenu->title" }}">{{$pageMenu->name}}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('docs',['version' => $currentVersion, 'category' => $category]) . "#$pageMenu->title" }}">{{$pageMenu->name}}</a></li>
                         @endif
                     @endforeach
                 @endforeach
