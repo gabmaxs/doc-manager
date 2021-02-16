@@ -20,6 +20,8 @@ Route::get('/docs/{version}', [App\Http\Controllers\PageController::class, 'redi
 Route::get('/docs/{version}/{category}', [App\Http\Controllers\PageController::class, 'docs'])->name('docs');
 Route::get('/docs/{version}/{category}/edit', [App\Http\Controllers\PageController::class, 'edit'])->name('edit');
 
-
-Route::put('/section/{section}', [App\Http\Controllers\EditController::class, 'editSection']);
 Auth::routes();
+
+// AJAX ROUTES
+Route::put('/section/{section}', [App\Http\Controllers\EditController::class, 'editSection']);
+Route::put('/page/{page}', [App\Http\Controllers\EditController::class, 'editPage']);
