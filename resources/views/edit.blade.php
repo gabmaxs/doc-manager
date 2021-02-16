@@ -28,17 +28,11 @@
         <div class="container">
             <h1>EDIT</h1>
             @foreach ($selectedCategory->pages as $page)
-                <article class="docs-article" id="{{ $page->htmlId }}">
-                    <header class="docs-header">
-                        <h1 class="docs-heading">{{ $page->name }}</h1>
-                        <section class="docs-intro">
-                            <p>Section intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque finibus condimentum nisl id vulputate. Praesent aliquet varius eros interdum suscipit. Donec eu purus sed nibh convallis bibendum quis vitae turpis. Duis vestibulum diam lorem, vitae dapibus nibh facilisis a. Fusce in malesuada odio.</p>
-                        </section><!--//docs-intro-->
-                    </header>
+                <page-component page-value="{{ $page }}">
                     @foreach ($page->sections as $section)
                         <section-component section-value="{{ $section }}"></section-component>
                     @endforeach
-                </article><!--//docs-article-->
+                </page-component>
             @endforeach
             <footer class="footer">
                 <div class="container text-center py-5">
