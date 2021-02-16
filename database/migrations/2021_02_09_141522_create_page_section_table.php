@@ -17,6 +17,7 @@ class CreatePageSectionTable extends Migration
             $table->id();
             $table->bigInteger("page_id");
             $table->bigInteger("section_id");
+            $table->integer("sequence");
             $table->boolean("is_active")->default(1);
             $table->timestamps();
         });

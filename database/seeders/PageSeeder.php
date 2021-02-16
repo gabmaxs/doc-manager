@@ -21,9 +21,16 @@ class PageSeeder extends Seeder
         ];
 
         $sections = [
-            [1,2],
-            3,
-            4
+            [
+                1 => ['sequence' => 2],
+                2 => ['sequence' => 1]
+            ],
+            [3 => ['sequence' => 1]],
+            [4 => ['sequence' => 1]]
+        ];
+
+        $sequence = [
+
         ];
 
         foreach($data as $key => $page) {
