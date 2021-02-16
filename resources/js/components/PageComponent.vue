@@ -1,5 +1,5 @@
 <template>
-    <article class="docs-article" :id="page.htmlId">
+    <article class="docs-article" :id="page.title">
         <header class="docs-header">
             <h1 v-if="!wantEditName" @click="wantEditName = true" class="docs-heading">{{ page.name }}</h1>
             <form v-if="wantEditName">

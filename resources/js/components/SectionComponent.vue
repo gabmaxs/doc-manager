@@ -1,5 +1,5 @@
 <template>
-    <section class="docs-section" :id="section.htmlId">
+    <section class="docs-section" :id="section.title">
         <h2 v-if="!wantEditName" @click="wantEditName = true" class="section-heading">{{ section.name }}</h2>
         <form v-if="wantEditName">
             <div class="form-group">

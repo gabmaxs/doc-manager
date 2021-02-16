@@ -14,9 +14,9 @@
                     <li class="nav-item section-title"><a class="nav-link" href="{{ route('docs',['version' => $currentVersion, 'category' => $category->id]) }}"><span class="theme-icon-holder mr-2"><i class="fas fa-map-signs"></i></span>{{$category->name}}</a></li>
                     @foreach ($category->pages as $pageMenu)
                         @if ($category->is($selectedCategory))
-                            <li class="nav-item"><a class="nav-link scrollto" href="#{{ $pageMenu->htmlId }}">{{$pageMenu->name}}</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto" href="#{{ $pageMenu->title }}">{{$pageMenu->name}}</a></li>
                         @else
-                            <li class="nav-item"><a class="nav-link" href="{{ route('docs',['version' => $currentVersion, 'category' => $category->id]) . "#$pageMenu->htmlId" }}">{{$pageMenu->name}}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('docs',['version' => $currentVersion, 'category' => $category->id]) . "#$pageMenu->title" }}">{{$pageMenu->name}}</a></li>
                         @endif
                     @endforeach
                 @endforeach
@@ -27,7 +27,7 @@
     <div class="docs-content">
         <div class="container">
             @foreach ($selectedCategory->pages as $page)
-                <article class="docs-article" id="{{ $page->htmlId }}">
+                <article class="docs-article" id="{{ $page->title }}">
                     <header class="docs-header">
                         <h1 class="docs-heading">{{ $page->name }}</h1>
                         <section class="docs-intro">
@@ -35,7 +35,7 @@
                         </section><!--//docs-intro-->
                     </header>
                     @foreach ($page->sections as $section)
-                        <section class="docs-section" id="{{ $section->htmlId }}">
+                        <section class="docs-section" id="{{ $section->title }}">
                             <h2 class="section-heading">{{ $section->name }}</h2>
                             <p>{{ $section->content }}</p>
                         </section><!--//section-->
