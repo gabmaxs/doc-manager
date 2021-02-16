@@ -1,5 +1,6 @@
 <template>
     <section class="docs-section" :id="section.title">
+        
         <h2 v-if="!wantEditName" @click="wantEditName = true" class="section-heading">{{ section.name }}</h2>
         <form v-if="wantEditName">
             <div class="form-group">
@@ -16,6 +17,9 @@
             <button @click.prevent="saveContent" class="btn btn-primary">Salvar</button>
             <button @click.prevent="wantEditContent = false" class="btn btn-danger">Cancelar</button>
         </form>
+        <div class="d-flex justify-content-lg-end">
+            <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete {{section.name}}</button>
+        </div>
     </section><!--//section-->
 </template>
 
