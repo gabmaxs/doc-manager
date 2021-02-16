@@ -29,9 +29,7 @@
             <h1>EDIT</h1>
             @foreach ($selectedCategory->pages as $page)
                 <page-component page-value="{{ $page }}">
-                    @foreach ($page->sections as $section)
-                        <section-component section-value="{{ $section }}"></section-component>
-                    @endforeach
+                    <section-panel-component page="{{ $page->id }}" section-list="{{ $page->sections }}"></section-panel-component>
                 </page-component>
             @endforeach
             <footer class="footer">
