@@ -15,9 +15,9 @@ class PageSeeder extends Seeder
     public function run()
     {
         $data = [
-            ["name" => "Page 1"],
-            ["name" => "Page 2"],
-            ["name" => "Page 3"],
+            ["name" => "Page 1", "title" => "Page 1"],
+            ["name" => "Page 2", "title" => "Page 2"],
+            ["name" => "Page 3", "title" => "Page 3"],
         ];
 
         $sections = [

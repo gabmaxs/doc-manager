@@ -17,6 +17,7 @@ class SectionSeeder extends Seeder
         $data = [
             [
                 "name" => "Section 1",
+                "title" => "Section 1",
                 "content" => "
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel facilisis sapien. Sed quis viverra quam, vitae commodo sem. Vivamus id odio tincidunt, porta nulla id, placerat nulla. Suspendisse potenti. Pellentesque eu orci sed ipsum euismod finibus eget a enim. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut a ligula id erat gravida posuere. Aenean nec est suscipit, laoreet ante ut, pharetra lacus. In in facilisis nunc. Duis efficitur libero quis lectus euismod molestie. Curabitur sapien dui, vulputate eget malesuada eu, gravida eget erat. Mauris sodales in tellus sed laoreet. Ut sed magna neque.
 
@@ -27,6 +28,7 @@ class SectionSeeder extends Seeder
             ],
             [
                 "name" => "Section 2",
+                "title" => "Section 2",
                 "content" => "
                     Etiam id quam ornare, consectetur massa quis, facilisis metus. Praesent sodales posuere arcu, vitae consequat diam laoreet eu. Cras at lorem nec nibh mollis dictum in eu dui. Aliquam efficitur neque eget metus auctor, id blandit sem tempus. Ut interdum turpis non euismod pellentesque. Pellentesque urna nunc, porta id ligula et, volutpat consequat leo. Aenean congue aliquet tincidunt.
 
@@ -35,6 +37,7 @@ class SectionSeeder extends Seeder
             ],
             [
                 "name" => "Section 3",
+                "title" => "Section 3",
                 "content" => "
                     Donec id interdum ante. Pellentesque sed semper est. Phasellus eget venenatis dolor. Aliquam sit amet egestas nisi. Mauris eu arcu lacinia urna efficitur imperdiet vel id elit. Cras vulputate dui in ornare rutrum. Quisque eget suscipit mi. Duis et faucibus massa. In faucibus efficitur augue ac consequat.
 
@@ -45,6 +48,7 @@ class SectionSeeder extends Seeder
             ],
             [
                 "name" => "Section 4",
+                "title" => "Section 4",
                 "content" => "
                     Nullam aliquet lorem aliquet nibh faucibus congue. Integer varius pellentesque facilisis. Phasellus placerat erat viverra est congue, ut bibendum mi vehicula. Nullam vel scelerisque risus. Phasellus facilisis ipsum id felis dictum, sed congue mauris rutrum. Suspendisse pulvinar felis eget est suscipit hendrerit. Aliquam erat volutpat. Maecenas euismod fermentum mi, vel efficitur risus blandit ac. Praesent justo neque, ultrices eu turpis at, vulputate feugiat odio. Vestibulum commodo vestibulum nibh, ac vehicula turpis sollicitudin et. Donec felis metus, ultrices non eros id, eleifend pharetra enim. Duis pulvinar tristique erat at consequat. Pellentesque eu ante a ante tempor luctus. Sed auctor cursus eros, et mattis ipsum tempus at.
 

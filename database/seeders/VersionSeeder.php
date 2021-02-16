@@ -14,6 +14,6 @@ class VersionSeeder extends Seeder
      */
     public function run()
     {
-        Version::create(["name" => "v1.0", "is_active" => 1]);
+        Version::create(["name" => "v1.0", "is_active" => 1, "title" => "1.x"]);
     }
 }

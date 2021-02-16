@@ -15,8 +15,8 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $data = [
-            ["name" => "Category 1"],
-            ["name" => "Category 2"],
+            ["name" => "Category 1", "title" => "Category 1"],
+            ["name" => "Category 2", "title" => "Category 2"],
         ];
 
         $pages = [
