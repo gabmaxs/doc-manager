@@ -11,6 +11,8 @@ class Page extends Model
 
     protected $fillable = ["name"];
 
+    protected $appends = ["htmlId"];
+
     public function sections() {
         return $this->belongsToMany(Section::class);
     }
