@@ -9,9 +9,7 @@ class Section extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["name", "content"];
-
-    protected $appends = ["htmlId"];
+    protected $fillable = ["name", "content", "title"];
 
     public function versions() {
         return $this->belongsToMany(Version::class);
@@ -21,7 +19,7 @@ class Section extends Model
         return $this->belongsToMany(Page::class);
     }
 
-    public function getHtmlIdAttribute() {
-        return strtolower(str_replace(" ","-",$this->name));
+    public function setTitleAttribute($value) {
+        $this->attributes['title'] = strtolower(str_replace(" ","-",$value));
     }
 }

@@ -11,7 +11,7 @@ class Version extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["name", "is_active"];
+    protected $fillable = ["name", "is_active", "title"];
 
     protected $casts = ["is_active" => "boolean"];
 
@@ -35,5 +35,9 @@ class Version extends Model
 
     public function scopeLast($query) {
         return $query->where("is_active", 1)->orderBy('id','desc')->first();
+    }
+
+    public function setTitleAttribute($value) {
+        $this->attributes['title'] = strtolower(str_replace(" ","-",$value));
     }
 }

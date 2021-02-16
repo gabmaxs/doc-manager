@@ -9,9 +9,7 @@ class Page extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["name"];
-
-    protected $appends = ["htmlId"];
+    protected $fillable = ["name", "title"];
 
     public function sections() {
         return $this->belongsToMany(Section::class);
@@ -21,8 +19,8 @@ class Page extends Model
         return $this->belongsToMany(Category::class);
     }
 
-    public function getHtmlIdAttribute() {
-        return strtolower(str_replace(" ","-",$this->name));
+    public function setTitleAttribute($value) {
+        $this->attributes['title'] = strtolower(str_replace(" ","-",$value));
     }
 
     public function scopeDefault($query) {
