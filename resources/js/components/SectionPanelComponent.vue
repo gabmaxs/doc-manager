@@ -1,29 +1,33 @@
 <template>
-    <draggable v-model="sections" @start="drag=true" @end="drag=false" @change="handleChange">
-        <transition-group>
+    <div>
+        <draggable v-model="sections" @start="drag=true" @end="drag=false" @change="handleChange">
             <SectionComponent v-for="section in sections" :key="section.id" :section="section"></SectionComponent>
-        </transition-group>
-    </draggable>
+            <button slot="footer" v-if="!wantAddSection" @click="wantAddSection = true" class="btn-block d-flex justify-content-center align-items-center add-section">New Section<i class="fas fa-plus ml-3"></i></button>
+        </draggable>
+        <NewSectionComponent v-if="wantAddSection" @save="addSection" @cancel="wantAddSection = false"></NewSectionComponent>
+    </div>
 </template>
 
 <script>
 import draggable from 'vuedraggable'
-import SectionComponent from "./SectionComponent.vue"
+import SectionComponent from "./SectionComponent"
+import NewSectionComponent from "./NewSectionComponent"
 import axios from 'axios'
 
 export default {
     name: "sectionPanelComponent",
     components: {
-        draggable, SectionComponent
+        draggable, SectionComponent, NewSectionComponent
     },
-    props: ["sectionList", "page"],
+    props: ["sectionList", "page", "version"],
     data() {
         return {
             sections: [],
+            wantAddSection: false
         }
     },
     methods: {
-        handleChange(event) {
+        handleChange() {
             this.updateSequence()
         },
         async updateSequence() {
@@ -36,6 +40,24 @@ export default {
                         }
                     }
                 )
+            }
+            catch(e)
+            {
+                console.log(e.response)
+            }
+        },
+        async addSection(section) {
+            try {
+                const response = await axios.post(`/version/${this.version}/page/${this.page}/section`,
+                    JSON.stringify({section, position: this.sections.length+1}),
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                        }
+                    }
+                )
+                this.sections.push(response.data)
+                this.wantAddSection = false
             }
             catch(e)
             {

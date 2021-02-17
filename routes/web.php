@@ -26,3 +26,5 @@ Auth::routes();
 Route::put('/section/{section}', [App\Http\Controllers\EditController::class, 'editSection']);
 Route::put('/page/{page}', [App\Http\Controllers\EditController::class, 'editPage']);
 Route::put('/page/{page}/sections', [App\Http\Controllers\EditController::class, 'editSectionsSequence']);
+
+Route::post('/version/{version}/page/{page}/section', [App\Http\Controllers\EditController::class, 'addSection']);

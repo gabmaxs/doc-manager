@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Section;
 use App\Models\Page;
+use App\Models\Version;
 use Illuminate\Http\Request;
 
 class EditController extends Controller
@@ -33,5 +34,12 @@ class EditController extends Controller
             ]);
         }
         return response()->json()->setStatusCode(204);
+    }
+
+    public function addSection(Request $request, Version $version, Page $page) {
+        $section = Section::create($request->get('section'));
+        $section->versions()->attach($version->id);
+        $section->pages()->attach($page->id, ["sequence" => $request->get('position')]);
+        return response()->json($section);
     }
 }

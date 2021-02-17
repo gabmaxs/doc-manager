@@ -29,11 +29,9 @@
             <h1>EDIT</h1>
             @foreach ($selectedCategory->pages as $page)
                 <page-component page-value="{{ $page }}">
-                    <section-panel-component page="{{ $page->id }}" section-list="{{ $page->sections }}"></section-panel-component>
+                    <section-panel-component version="{{ $currentVersion->id }}" page="{{ $page->id }}" section-list="{{ $page->sections }}"></section-panel-component>
                 </page-component>
             @endforeach
-            <div class="btn-block d-flex justify-content-center align-items-center add-section">New Section<i class="fas fa-plus ml-3"></i></button>
-
         </div> 
         
     </div>
