@@ -42,4 +42,11 @@ class EditController extends Controller
         $section->pages()->attach($page->id, ["sequence" => $request->get('position')]);
         return response()->json($section);
     }
+
+    public function deleteSection(Section $section) {
+        $section->versions()->detach();
+        $section->pages()->detach();
+        $section->delete();
+        return response()->json()->setStatusCode(204);
+    }
 }

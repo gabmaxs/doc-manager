@@ -28,3 +28,5 @@ Route::put('/page/{page}', [App\Http\Controllers\EditController::class, 'editPag
 Route::put('/page/{page}/sections', [App\Http\Controllers\EditController::class, 'editSectionsSequence']);
 
 Route::post('/version/{version}/page/{page}/section', [App\Http\Controllers\EditController::class, 'addSection']);
+
+Route::delete('/section/{section}', [App\Http\Controllers\EditController::class, 'deleteSection']);

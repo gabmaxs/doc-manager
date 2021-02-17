@@ -17,7 +17,7 @@
             <button @click.prevent="wantEditContent = false" class="btn btn-danger">Cancelar</button>
         </form>
         <div class="d-flex justify-content-lg-end">
-            <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete {{section.name}}</button>
+            <button @click="wantDelete" class="btn btn-danger"><i class="fa fa-trash"></i> Delete {{section.name}}</button>
         </div>
     </section><!--//section-->
 </template>
@@ -36,6 +36,9 @@
             }
         },
         methods: {
+            wantDelete() {
+                this.$emit("delete", this.section.id)
+            },
             saveContent() {
                 this.section.content = this.newContent
                 this.sendRequest()
