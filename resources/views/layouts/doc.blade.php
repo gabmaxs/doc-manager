@@ -52,7 +52,7 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <h6 class="dropdown-header">Versions</h6>
                             @foreach ($versions as $version)
-                                <a class="dropdown-item" href="{{ route('redirect',['version' => $version->id]) }}">{{ substr($version->name,1) }}</a>        
+                                <a class="dropdown-item" href="{{ route('redirect',['version' => $version]) }}">{{ substr($version->name,1) }}</a>        
                             @endforeach
                         </div>
                     </div>
