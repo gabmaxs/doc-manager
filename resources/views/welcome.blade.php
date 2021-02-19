@@ -31,7 +31,7 @@
                             <div class="card-text">
                                 Section overview goes here. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
                             </div>
-                            <a class="card-link-mask" href="{{ route('docs', ["version" => $currentVersion, "category" => $category]) }}"></a>
+                            <a class="card-link-mask" href="{{ route('docs', ["version" => $currentVersion, "page" => $category->first_page]) }}"></a>
                         </div><!--//card-body-->
                     </div><!--//card-->
                 </div><!--//col-->

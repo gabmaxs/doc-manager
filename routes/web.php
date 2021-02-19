@@ -17,8 +17,8 @@ Route::get('/', [App\Http\Controllers\PageController::class, "welcome"])->name("
 
 Route::get('/docs/{version:title?}', [App\Http\Controllers\PageController::class, 'redirect'])->name('redirect');
 
-Route::get('/docs/{version:title}/{category:title}', [App\Http\Controllers\PageController::class, 'docs'])->name('docs');
-Route::get('/docs/{version:title}/{category:title}/edit', [App\Http\Controllers\PageController::class, 'edit'])->name('edit');
+Route::get('/docs/{version:title}/{page:title}', [App\Http\Controllers\PageController::class, 'docs'])->name('docs');
+Route::get('/docs/{version:title}/{page:title}/edit', [App\Http\Controllers\PageController::class, 'edit'])->name('edit');
 
 Auth::routes();
 
