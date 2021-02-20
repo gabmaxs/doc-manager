@@ -36,7 +36,6 @@ export default {
             },
             deleteSection() {
                 console.log(this.section.id)
-                this.closeModal();
             }
         }
     }

@@ -57,7 +57,6 @@
                 this.sendRequest()
             },
             showModal() {
-                //this.isModalVisible = true
                 let element = this.$refs.modal.$el
                 $(element).modal('show')
             },
