@@ -1,4 +1,5 @@
 <template>
+<div>
     <section class="docs-section" :id="section.title">
         <h2 v-if="!wantEditName" @click="wantEditName = true" class="section-heading">{{ section.name }}</h2>
         <form v-if="wantEditName">
@@ -17,22 +18,30 @@
             <button @click.prevent="wantEditContent = false" class="btn btn-danger">Cancelar</button>
         </form>
         <div class="d-flex justify-content-lg-end">
-            <button @click="wantDelete" class="btn btn-danger"><i class="fa fa-trash"></i> Delete {{section.name}}</button>
+            <button @click="showModal" class="btn btn-danger"><i class="fa fa-trash"></i> Delete {{section.name}}</button>
         </div>
     </section><!--//section-->
+
+     <ModalComponent ref="modal" :section="section" v-show="isModalVisible" />
+</div>
 </template>
 
 <script>
     import axios from "axios"
+    import ModalComponent from './ModalComponent'
     export default {
         name: "SectionComponent",
         props: ["section"],
+        components: {
+            ModalComponent
+        },
         data() {
             return {
                 wantEditContent: false,
                 newContent: "",
                 wantEditName: false,
-                newName: ""
+                newName: "",
+                isModalVisible: false,
             }
         },
         methods: {
@@ -46,6 +55,11 @@
             saveName() {
                 this.section.name = this.newName
                 this.sendRequest()
+            },
+            showModal() {
+                //this.isModalVisible = true
+                let element = this.$refs.modal.$el
+                $(element).modal('show')
             },
             async sendRequest() {
                 try {
