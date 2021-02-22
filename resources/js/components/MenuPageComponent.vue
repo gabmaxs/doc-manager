@@ -1,6 +1,6 @@
 <template>
     <li v-if="page" class="nav-item">
-        <a class="nav-link active" :href="page.title">
+        <a class="nav-link active" :href="pageLink">
             {{page.name}}
         </a> 
         <span class="btn btn-sm">
@@ -17,7 +17,13 @@ export default {
         return {
         }
     },
-    methods: {
+    computed: {
+        pageLink() {
+            const arrayUrl = window.location.href.split("/")
+            arrayUrl[5] = this.page.title
+            const url = arrayUrl.join("/")
+            return url
+        }
     }
 }
 </script>

@@ -30,6 +30,7 @@
                 <p>You can create new versions and manage pages and categories. Need help? <u>Check out our demo!</u></p>
                 </div>
             </div>
+            {{Request::url()}}
             <page-component page-value="{{ $page }}">
                 <section-panel-component version="{{ $currentVersion->id }}" page="{{ $page->id }}" section-list="{{ $page->sections }}"></section-panel-component>
             </page-component>
