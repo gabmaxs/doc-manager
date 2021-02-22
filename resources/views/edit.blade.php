@@ -10,24 +10,19 @@
         </div>
         <nav id="docs-nav" class="docs-nav navbar">
         <ul class="section-items list-unstyled nav flex-column pb-3">
-                @foreach($categories as $category)
-				<li class="nav-item section-title"><a class="nav-link" href="#{{str_replace(' ', '', $category->name)}}" data-toggle="collapse" aria-expanded="false">
-                    <span class="theme-icon-holder mr-2">
-                    <i class="{{$category->icon}}"></i></span>{{$category->name}} 
-                    </a> <span class="btn btn-sm"><i class="fas fa-trash"></i></span></li>
-  					<ul class="collapse list-unstyled" id="{{str_replace(' ', '', $category->name)}}">
-                    @foreach ($category->pages as $pageMenu)
-                        @if ($category->is($page->category))
-                            <li class="nav-item"><a class="nav-link scrollto active" href="#{{ $pageMenu->title }}">{{$pageMenu->name}}</a> <span class="btn btn-sm"><i class="fa fa-trash trash-red"></i></span></li>
-                        @else
-                            <li class="nav-item"><a class="nav-link" href="{{ route('edit',['version' => $currentVersion, 'page' => $pageMenu])}}">{{$pageMenu->name}}</a> <span class="btn btn-sm"><i class="fa fa-trash trash-red"></i></span></li>
-                        @endif
-                    @endforeach
-                    <li class="nav-item">
-                            <a href="#" class="btn btn-light btn-sm"><i class="fas fa-plus"></i> New Page</a>
-                        </li>
-					</ul> 
-                @endforeach
+            <category-panel-component category-list="{{$categories}}"></category-panel-component>
+            {{-- <ul class="collapse list-unstyled" id="{{$category->title}}">
+            @foreach ($category->pages as $pageMenu)
+                @if ($category->is($page->category))
+                    <li class="nav-item"><a class="nav-link scrollto active" href="#{{ $pageMenu->title }}">{{$pageMenu->name}}</a> <span class="btn btn-sm"><i class="fa fa-trash trash-red"></i></span></li>
+                @else
+                    <li class="nav-item"><a class="nav-link" href="{{ route('edit',['version' => $currentVersion, 'page' => $pageMenu])}}">{{$pageMenu->name}}</a> <span class="btn btn-sm"><i class="fa fa-trash trash-red"></i></span></li>
+                @endif
+            @endforeach
+            <li class="nav-item">
+                    <a href="#" class="btn btn-light btn-sm"><i class="fas fa-plus"></i> New Page</a>
+                </li>
+            </ul>  --}}
                     <li class="nav-item section-title mt-3">
                         <a class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> New Category</a>
                     </li>
