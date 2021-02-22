@@ -36,8 +36,10 @@
     </div><!--//docs-sidebar-->
     <div class="docs-content">
         <div class="container">
-            <h1>EDIT</h1>
-            <page-component page-value="{{ $page }}">
+        <div class="alert alert-primary mt-2" role="alert">
+						  Welcome! here, you can create new versions and manage pages and categories. Need help? <u>Check out our demo!</u>
+						</div>
+                                    <page-component page-value="{{ $page }}">
                 <section-panel-component version="{{ $currentVersion->id }}" page="{{ $page->id }}" section-list="{{ $page->sections }}"></section-panel-component>
             </page-component>
             {{-- @foreach ($selectedCategory->pages as $page)
