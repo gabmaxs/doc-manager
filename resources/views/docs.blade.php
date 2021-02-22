@@ -27,7 +27,7 @@
 					</ul> 
                 @endforeach
                 </ul>
-        </navbar>
+        </nav>
            
        
           
