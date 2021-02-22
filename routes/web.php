@@ -31,3 +31,5 @@ Route::put('/category/{category}', [App\Http\Controllers\CategoryController::cla
 Route::post('/version/{version}/page/{page}/section', [App\Http\Controllers\SectionController::class, 'addSection']);
 
 Route::delete('/section/{section}', [App\Http\Controllers\SectionController::class, 'deleteSection']);
+
+Route::get("/category/{category}/page", [App\Http\Controllers\CategoryController::class, 'getPages']);

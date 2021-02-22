@@ -18,13 +18,21 @@
             <button @click.prevent="save" class="btn btn-primary">Salvar</button>
             <button @click.prevent="wantEdit = false" class="btn btn-danger">Cancelar</button>
         </form>
+
+        <!-- PAGE -->
+        <MenuPagePanelComponent :category-id="category.id" :collapse-id="category.title"></MenuPagePanelComponent>
     </li>
 </template>
 
 <script>
+import MenuPagePanelComponent from "./MenuPagePanelComponent"
+
 export default {
     name: "CategoryComponent",
     props: ["category"],
+    components: {
+        MenuPagePanelComponent
+    },
     data() {
         return {
             wantEdit: false,

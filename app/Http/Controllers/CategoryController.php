@@ -17,4 +17,9 @@ class CategoryController extends Controller
         $category->save();
         return response()->json($category);
     }
+
+    public function getPages(Category $category) {
+        $pages = $category->pages;
+        return response()->json($pages);
+    }
 }
