@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Section;
 use App\Models\Page;
 use App\Models\Version;
-use Illuminate\Http\Request;
 
-class EditController extends Controller
+class SectionController extends Controller
 {
     public function __construct()
     {
@@ -20,13 +20,7 @@ class EditController extends Controller
         return response()->json($section);
     }
 
-    public function editPage(Request $request, Page $page) {
-        $page->fill($request->only('name'));
-        $page->save();
-        return response()->json($page);
-    }
-
-    public function editSectionsSequence(Request $request, Page $page) {
+    public function editSectionSequence(Request $request, Page $page) {
         $sections = $request->only('sections')['sections'];
         foreach($sections as $key => $section) {
             $page->sections()->updateExistingPivot($section['id'], [
