@@ -17608,6 +17608,10 @@ a.theme-link:hover {
   border-radius: 1rem;
 }
 
+.trash-red {
+  color: #EC575B;
+}
+
 .docs-content {
   margin-left: 300px;
   padding-bottom: 500px;

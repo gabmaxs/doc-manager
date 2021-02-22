@@ -14,13 +14,13 @@
 				<li class="nav-item section-title"><a class="nav-link" href="#{{str_replace(' ', '', $category->name)}}" data-toggle="collapse" aria-expanded="false">
                     <span class="theme-icon-holder mr-2">
                     <i class="{{$category->icon}}"></i></span>{{$category->name}} 
-                    </a> <span class="btn btn-sm"><i style="color: #EC575B;" class="fa fa-trash"></i></span></li>
+                    </a> <span class="btn btn-sm"><i class="fas fa-trash"></i></span></li>
   					<ul class="collapse list-unstyled" id="{{str_replace(' ', '', $category->name)}}">
                     @foreach ($category->pages as $pageMenu)
                         @if ($category->is($page->category))
-                            <li class="nav-item"><a class="nav-link scrollto active" href="#{{ $pageMenu->title }}">{{$pageMenu->name}}</a></li>
+                            <li class="nav-item"><a class="nav-link scrollto active" href="#{{ $pageMenu->title }}">{{$pageMenu->name}}</a> <span class="btn btn-sm"><i class="fa fa-trash trash-red"></i></span></li>
                         @else
-                            <li class="nav-item"><a class="nav-link" href="{{ route('docs',['version' => $currentVersion, 'page' => $pageMenu]) . "#$pageMenu->title" }}">{{$pageMenu->name}}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('docs',['version' => $currentVersion, 'page' => $pageMenu]) . "#$pageMenu->title" }}">{{$pageMenu->name}}</a> <span class="btn btn-sm"><i class="fa fa-trash trash-red"></i></span></li>
                         @endif
                     @endforeach
                     <li class="nav-item">
