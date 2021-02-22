@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Version;
 use App\Models\Category;
 use App\Models\Page;
+use App\Models\Section;
 
 class PageController extends Controller
 {
@@ -28,5 +29,18 @@ class PageController extends Controller
             ]);
         }
         return response()->json()->setStatusCode(204);
+    }
+
+    public function addPage(Request $request, Version $version, Category $category) {
+        $page = Page::create($request->get('page'));
+        $section = Section::create([
+            'name' => "Section for $page->name",
+            'title' => "Section for $page->name",
+            "content" => "Content here..."
+        ]);
+        $page->sections()->attach($section->id, ["sequence" => 1]);
+        $page->categories()->attach($category->id, ["sequence" => $request->get('position')]);
+        $section->versions()->attach($version->id);
+        return response()->json($page);
     }
 }

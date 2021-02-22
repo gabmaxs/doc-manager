@@ -3,10 +3,10 @@
         <draggable v-model="pages" @start="drag=true" @end="drag=false" @change="handleChange">
             <MenuPageComponent v-for="page in pages" :key="page.id" :page="page"></MenuPageComponent>
         </draggable>
-        <li class="nav-item">
-            <a href="#" class="btn btn-light btn-sm"><i class="fas fa-plus"></i> New Page</a>
+        <li v-if="!wantAddPage" class="nav-item">
+            <a @click="wantAddPage = true" class="btn btn-light btn-sm"><i class="fas fa-plus"></i> New Page</a>
         </li>
-        <!-- <NewSectionComponent v-if="wantAddCategory" @save="addSection" @cancel="wantAddCategory = false"></NewSectionComponent> -->
+        <NewPageComponent v-if="wantAddPage" @save="addPage" @cancel="wantAddPage = false" ></NewPageComponent>
         <!-- <ModalComponent @close="closeModal" @delete="deleteSection" :section="selectedCategory" v-if="isModalVisible"></ModalComponent> -->
     </ul>
 </template>
@@ -14,13 +14,14 @@
 <script>
 import draggable from 'vuedraggable'
 import MenuPageComponent from "./MenuPageComponent"
+import NewPageComponent from "./NewPageComponent"
 import axios from 'axios'
 
 export default {
     name: "MenuPagePanelComponent",
-    props: ["categoryId", "collapseId"],
+    props: ["categoryId", "collapseId","version"],
     component: {
-        MenuPageComponent, draggable
+        MenuPageComponent, draggable, NewPageComponent
     },
     data() {
         return {
@@ -67,7 +68,25 @@ export default {
             {
                 console.log(e.response)
             }
-        }
+        },
+        async addPage(page) {
+            try {
+                const response = await axios.post(`/version/${this.version}/category/${this.categoryId}/page/`,
+                    JSON.stringify({page, position: this.pages.length+1}),
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                        }
+                    }
+                )
+                this.pages.push(response.data)
+                this.wantAddPage = false
+            }
+            catch(e)
+            {
+                console.log(e.response)
+            }
+        },
     },
     created() {
         this.getPages(this.categoryId)

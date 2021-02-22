@@ -20,7 +20,7 @@
         </form>
 
         <!-- PAGE -->
-        <MenuPagePanelComponent :category-id="category.id" :collapse-id="category.title"></MenuPagePanelComponent>
+        <MenuPagePanelComponent :version="version" :category-id="category.id" :collapse-id="category.title"></MenuPagePanelComponent>
     </li>
 </template>
 
@@ -29,7 +29,7 @@ import MenuPagePanelComponent from "./MenuPagePanelComponent"
 
 export default {
     name: "CategoryComponent",
-    props: ["category"],
+    props: ["category", "version"],
     components: {
         MenuPagePanelComponent
     },

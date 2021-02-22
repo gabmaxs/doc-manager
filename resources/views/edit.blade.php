@@ -10,7 +10,7 @@
         </div>
         <nav id="docs-nav" class="docs-nav navbar">
         <ul class="section-items list-unstyled nav flex-column pb-3">
-            <category-panel-component category-list="{{$categories}}"></category-panel-component>
+            <category-panel-component version="{{ $currentVersion->id }}" category-list="{{$categories}}"></category-panel-component>
             <li class="nav-item section-title mt-3">
                 <a class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> New Category</a>
             </li>
