@@ -1,5 +1,5 @@
 <template>
-<div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+<div class="modal" ref="modal" id="deleteModal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -26,17 +26,24 @@ export default {
         name: "ModalComponent",
         props: ["section"],
         data() {
-            return {
-
-            }
+          return {
+            modal: null
+          }
         },
         methods: {
             closeModal() {
-                $('#deleteModal').modal('hide')
+              this.$emit("close", true)
             },
             deleteSection() {
-                console.log(this.section.id)
+              this.$emit("delete", this.section.id)
             }
+        },
+        mounted() {
+          this.modal = this.$refs.modal
+          $(this.modal).modal('show')
+        },
+        beforeDestroy() {
+          $(this.modal).modal('hide')
         }
     }
 

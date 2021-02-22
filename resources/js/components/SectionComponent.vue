@@ -18,35 +18,29 @@
             <button @click.prevent="wantEditContent = false" class="btn btn-danger">Cancelar</button>
         </form>
         <div class="d-flex justify-content-lg-end">
-            <button @click="showModal" class="btn btn-danger"><i class="fa fa-trash"></i> Delete {{section.name}}</button>
+            <button @click="wantDelete" class="btn btn-danger"><i class="fa fa-trash"></i> Delete {{section.name}}</button>
         </div>
     </section><!--//section-->
-
-     <ModalComponent ref="modal" :section="section" v-show="isModalVisible" />
 </div>
 </template>
 
 <script>
     import axios from "axios"
-    import ModalComponent from './ModalComponent'
+
     export default {
         name: "SectionComponent",
         props: ["section"],
-        components: {
-            ModalComponent
-        },
         data() {
             return {
                 wantEditContent: false,
                 newContent: "",
                 wantEditName: false,
-                newName: "",
-                isModalVisible: false,
+                newName: ""
             }
         },
         methods: {
             wantDelete() {
-                this.$emit("delete", this.section.id)
+                this.$emit("delete", this.section)
             },
             saveContent() {
                 this.section.content = this.newContent
@@ -55,10 +49,6 @@
             saveName() {
                 this.section.name = this.newName
                 this.sendRequest()
-            },
-            showModal() {
-                let element = this.$refs.modal.$el
-                $(element).modal('show')
             },
             async sendRequest() {
                 try {

@@ -1,10 +1,11 @@
 <template>
     <div>
         <draggable v-model="sections" @start="drag=true" @end="drag=false" @change="handleChange">
-            <SectionComponent @delete="deleteSection" v-for="section in sections" :key="section.id" :section="section"></SectionComponent>
+            <SectionComponent @delete="wantDelete" v-for="section in sections" :key="section.id" :section="section"></SectionComponent>
             <button slot="footer" v-if="!wantAddSection" @click="wantAddSection = true" class="btn-block d-flex justify-content-center align-items-center add-section">New Section<i class="fas fa-plus ml-3"></i></button>
         </draggable>
         <NewSectionComponent v-if="wantAddSection" @save="addSection" @cancel="wantAddSection = false"></NewSectionComponent>
+        <ModalComponent @close="closeModal" @delete="deleteSection" :section="selectedSection" v-if="isModalVisible"></ModalComponent>
     </div>
 </template>
 
@@ -12,18 +13,21 @@
 import draggable from 'vuedraggable'
 import SectionComponent from "./SectionComponent"
 import NewSectionComponent from "./NewSectionComponent"
+import ModalComponent from './ModalComponent'
 import axios from 'axios'
 
 export default {
     name: "sectionPanelComponent",
     components: {
-        draggable, SectionComponent, NewSectionComponent
+        draggable, SectionComponent, NewSectionComponent, ModalComponent
     },
     props: ["sectionList", "page", "version"],
     data() {
         return {
             sections: [],
-            wantAddSection: false
+            wantAddSection: false,
+            isModalVisible: false,
+            selectedSection: {}
         }
     },
     methods: {
@@ -64,8 +68,13 @@ export default {
                 console.log(e.response)
             }
         },
+        async wantDelete(selectedSection) {
+            this.selectedSection = selectedSection
+            this.isModalVisible = true
+        },
         async deleteSection(section_id) {
             try {
+                await this.closeModal()
                 const response = await axios.delete(`/section/${section_id}`)
                 this.sections = this.sections.filter(section => section.id != section_id)
                 this.updateSequence()
@@ -74,6 +83,10 @@ export default {
             {
                 console.log(e.response)
             }
+        },
+        async closeModal() {
+            this.isModalVisible = false
+            this.selectedSection = {}
         }
     },
     created() {
