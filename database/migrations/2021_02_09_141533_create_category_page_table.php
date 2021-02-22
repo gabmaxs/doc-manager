@@ -17,6 +17,7 @@ class CreateCategoryPageTable extends Migration
             $table->id();
             $table->bigInteger("category_id");
             $table->bigInteger("page_id");
+            $table->integer("sequence");
             $table->boolean("is_active")->default(1);
             $table->timestamps();
         });

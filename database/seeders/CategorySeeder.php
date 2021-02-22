@@ -20,8 +20,11 @@ class CategorySeeder extends Seeder
         ];
 
         $pages = [
-            [1,2],
-            3
+            [
+                1 => ["sequence" => 2],
+                2 => ["sequence" => 1]
+            ],
+            [3 => ["sequence" => 1]]
         ];
 
         foreach($data as $key => $category) {

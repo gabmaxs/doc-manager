@@ -12,7 +12,7 @@ class Category extends Model
     protected $fillable = ["name", "title", "icon"];
 
     public function pages() {
-        return $this->belongsToMany(Page::class);
+        return $this->belongsToMany(Page::class)->withPivot('sequence')->orderByPivot('sequence');;
     }
 
     public function setTitleAttribute($value) {

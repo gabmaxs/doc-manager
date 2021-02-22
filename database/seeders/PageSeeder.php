@@ -29,10 +29,6 @@ class PageSeeder extends Seeder
             [4 => ['sequence' => 1]]
         ];
 
-        $sequence = [
-
-        ];
-
         foreach($data as $key => $page) {
             $pag = Page::create($page);
             $pag->sections()->attach($sections[$key]);
