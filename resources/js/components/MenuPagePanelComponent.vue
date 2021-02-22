@@ -38,7 +38,7 @@ export default {
         async updateSequence() {
             console.log("atualizando sequencia")
             try {
-                const resp = await axios.put(`/category/${this.categoryId}/pages`,
+                await axios.put(`/category/${this.categoryId}/pages`,
                     JSON.stringify({pages: this.pages}),
                     {
                         headers: {
@@ -46,7 +46,6 @@ export default {
                         }
                     }
                 )
-                console.log(resp)
             }
             catch(e)
             {
