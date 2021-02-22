@@ -38,8 +38,6 @@ class SectionController extends Controller
     }
 
     public function deleteSection(Section $section) {
-        $section->versions()->detach();
-        $section->pages()->detach();
         $section->delete();
         return response()->json()->setStatusCode(204);
     }

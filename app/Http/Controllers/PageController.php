@@ -43,4 +43,9 @@ class PageController extends Controller
         $section->versions()->attach($version->id);
         return response()->json($page);
     }
+
+    public function deletePage(Page $page) {
+        $page->delete();
+        return response()->json()->setStatusCode(204);
+    }
 }

@@ -26,4 +26,10 @@ class Page extends Model
     public function scopeDefault($query) {
         return $query->first();
     }
+
+    public function delete() {
+        $this->categories()->detach();
+        $this->sections()->detach();
+        parent::delete();
+    }
 }

@@ -1,13 +1,13 @@
 <template>
     <ul class="collapse list-unstyled" :id="collapseId">
         <draggable v-model="pages" @start="drag=true" @end="drag=false" @change="handleChange">
-            <MenuPageComponent v-for="page in pages" :key="page.id" :page="page"></MenuPageComponent>
+            <MenuPageComponent v-for="page in pages" @delete="wantDelete" :key="page.id" :page="page"></MenuPageComponent>
         </draggable>
         <li v-if="!wantAddPage" class="nav-item">
             <a @click="wantAddPage = true" class="btn btn-light btn-sm"><i class="fas fa-plus"></i> New Page</a>
         </li>
         <NewPageComponent v-if="wantAddPage" @save="addPage" @cancel="wantAddPage = false" ></NewPageComponent>
-        <!-- <ModalComponent @close="closeModal" @delete="deleteSection" :section="selectedCategory" v-if="isModalVisible"></ModalComponent> -->
+        <ModalComponent @close="closeModal" @delete="deletePage" :item="selectedPage" v-if="isModalVisible"></ModalComponent>
     </ul>
 </template>
 
@@ -87,6 +87,26 @@ export default {
                 console.log(e.response)
             }
         },
+        async wantDelete(selectedPage) {
+            this.selectedPage = selectedPage
+            this.isModalVisible = true
+        },
+        async deletePage(page_id) {
+            try {
+                await this.closeModal()
+                const response = await axios.delete(`/page/${page_id}`)
+                this.pages = this.pages.filter(page => page.id != page_id)
+                this.updateSequence()
+            }
+            catch(e)
+            {
+                console.log(e.response)
+            }
+        },
+        async closeModal() {
+            this.isModalVisible = false
+            this.selectedPage = {}
+        }
     },
     created() {
         this.getPages(this.categoryId)

@@ -22,4 +22,10 @@ class Section extends Model
     public function setTitleAttribute($value) {
         $this->attributes['title'] = strtolower(str_replace(" ","-",$value));
     }
+
+    public function delete() {
+        $this->versions()->detach();
+        $this->pages()->detach();
+        parent::delete();
+    }
 }

@@ -3,7 +3,7 @@
         <a class="nav-link active" :href="pageLink">
             {{page.name}}
         </a> 
-        <span class="btn btn-sm">
+        <span @click="wantDelete" class="btn btn-sm">
             <i class="fa fa-trash trash-red"></i>
         </span>
     </li>  
@@ -13,9 +13,10 @@
 export default {
     name: "MenuPageComponent",
     props: ["page"],
-    data() {
-        return {
-        }
+    methods: {
+        wantDelete() {
+            this.$emit("delete", this.page)
+        },
     },
     computed: {
         pageLink() {

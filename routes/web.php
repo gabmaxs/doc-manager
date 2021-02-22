@@ -32,6 +32,8 @@ Route::delete('/section/{section}', [App\Http\Controllers\SectionController::cla
 Route::put('/page/{page}', [App\Http\Controllers\PageController::class, 'editPage']);
 Route::put('/category/{category}/pages', [App\Http\Controllers\PageController::class, 'editPageSequence']);
 Route::post('/version/{version}/category/{category}/page/', [App\Http\Controllers\PageController::class, 'addPage']);
+Route::delete('/page/{page}', [App\Http\Controllers\PageController::class, 'deletePage']);
+
 
 Route::put('/category/{category}', [App\Http\Controllers\CategoryController::class, 'editCategory']);
 Route::get("/category/{category}/page", [App\Http\Controllers\CategoryController::class, 'getPages']);
