@@ -1,8 +1,5 @@
 @extends('layouts.doc')
 @section('content')
-<style>
-
-</style>
 <div class="docs-wrapper">
     <div id="docs-sidebar" class="docs-sidebar">
         <div class="top-search-box d-lg-none p-3">
@@ -11,21 +8,29 @@
                 <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
             </form>
         </div>
+
         <nav id="docs-nav" class="docs-nav navbar">
-            <ul class="section-items list-unstyled nav flex-column pb-3">
-                @foreach ($categories as $category)
-                    <li class="nav-item section-title"><a class="nav-link"><span class="theme-icon-holder mr-2"><i class="{{$category->icon}}"></i></span>{{$category->name}}</a></li>
+        <ul class="section-items list-unstyled nav flex-column pb-3">
+                @foreach($categories as $category)
+				<li class="nav-item section-title"><a class="nav-link" href="#{{str_replace(' ', '', $category->name)}}" data-toggle="collapse" aria-expanded="false">
+                    <span class="theme-icon-holder mr-2">
+                    <i class="{{$category->icon}}"></i></span>{{$category->name}}
+                </a></li>
+  					<ul class="collapse list-unstyled" id="{{str_replace(' ', '', $category->name)}}">
                     @foreach ($category->pages as $pageMenu)
                         @if ($category->is($page->category))
-                            <li class="nav-item"><a class="nav-link scrollto" href="#{{ $pageMenu->title }}">{{$pageMenu->name}}</a></li>
-                            
+                            <li class="nav-item"><a class="nav-link scrollto active" href="#{{ $pageMenu->title }}">{{$pageMenu->name}}</a></li>
                         @else
                             <li class="nav-item"><a class="nav-link" href="{{ route('docs',['version' => $currentVersion, 'page' => $pageMenu]) . "#$pageMenu->title" }}">{{$pageMenu->name}}</a></li>
                         @endif
                     @endforeach
+					</ul> 
                 @endforeach
                 </ul>
-        </nav><!--//docs-nav-->
+        </navbar>
+           
+       
+          
     </div><!--//docs-sidebar-->
     <div class="docs-content">
         <div class="container">
