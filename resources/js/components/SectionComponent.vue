@@ -48,6 +48,7 @@
             },
             saveName() {
                 this.section.name = this.newName
+                this.section.title = this.newName
                 this.sendRequest()
             },
             async sendRequest() {
