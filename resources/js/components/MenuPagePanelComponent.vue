@@ -36,20 +36,21 @@ export default {
         },
         async updateSequence() {
             console.log("atualizando sequencia")
-            // try {
-            //     await axios.put(`/page/${this.page}/sections`,
-            //         JSON.stringify({sections: this.sections}),
-            //         {
-            //             headers: {
-            //                 "Content-Type": "application/json"
-            //             }
-            //         }
-            //     )
-            // }
-            // catch(e)
-            // {
-            //     console.log(e.response)
-            // }
+            try {
+                const resp = await axios.put(`/category/${this.categoryId}/pages`,
+                    JSON.stringify({pages: this.pages}),
+                    {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    }
+                )
+                console.log(resp)
+            }
+            catch(e)
+            {
+                console.log(e.response)
+            }
         },
         async getPages(categoryId) {
             try {

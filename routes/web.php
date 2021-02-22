@@ -27,6 +27,7 @@ Route::put('/section/{section}', [App\Http\Controllers\SectionController::class,
 Route::put('/page/{page}/sections', [App\Http\Controllers\SectionController::class, 'editSectionSequence']);
 Route::put('/page/{page}', [App\Http\Controllers\PageController::class, 'editPage']);
 Route::put('/category/{category}', [App\Http\Controllers\CategoryController::class, 'editCategory']);
+Route::put('/category/{category}/pages', [App\Http\Controllers\PageController::class, 'editPageSequence']);
 
 Route::post('/version/{version}/page/{page}/section', [App\Http\Controllers\SectionController::class, 'addSection']);
 

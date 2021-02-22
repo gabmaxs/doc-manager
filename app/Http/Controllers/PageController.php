@@ -20,4 +20,13 @@ class PageController extends Controller
         return response()->json($page);
     }
 
+    public function editPageSequence(Request $request, Category $category) {
+        $pages = $request->only('pages')['pages'];
+        foreach($pages as $key => $page) {
+            $category->pages()->updateExistingPivot($page['id'], [
+                'sequence' => $key+1,
+            ]);
+        }
+        return response()->json()->setStatusCode(204);
+    }
 }
