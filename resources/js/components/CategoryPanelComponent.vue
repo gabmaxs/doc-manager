@@ -1,12 +1,12 @@
 <template>
-    <div>
+    <li>
         <draggable v-model="categories" @start="drag=true" @end="drag=false" @change="handleChange">
             <CategoryComponent v-for="category in categories" :key="category.id" :category="category"></CategoryComponent>
         </draggable>
         <slot></slot>
         <!-- <NewSectionComponent v-if="wantAddCategory" @save="addSection" @cancel="wantAddCategory = false"></NewSectionComponent> -->
         <!-- <ModalComponent @close="closeModal" @delete="deleteSection" :section="selectedCategory" v-if="isModalVisible"></ModalComponent> -->
-    </div>
+    </li>
 </template>
 
 <script>
