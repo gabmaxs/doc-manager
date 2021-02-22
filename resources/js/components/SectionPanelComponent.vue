@@ -5,7 +5,7 @@
             <button slot="footer" v-if="!wantAddSection" @click="wantAddSection = true" class="btn-block d-flex justify-content-center align-items-center add-section">New Section<i class="fas fa-plus ml-3"></i></button>
         </draggable>
         <NewSectionComponent v-if="wantAddSection" @save="addSection" @cancel="wantAddSection = false"></NewSectionComponent>
-        <ModalComponent @close="closeModal" @delete="deleteSection" :section="selectedSection" v-if="isModalVisible"></ModalComponent>
+        <ModalComponent @close="closeModal" @delete="deleteSection" :item="selectedSection" v-if="isModalVisible"></ModalComponent>
     </div>
 </template>
 
