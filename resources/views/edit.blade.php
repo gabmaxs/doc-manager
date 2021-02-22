@@ -36,9 +36,19 @@
     </div><!--//docs-sidebar-->
     <div class="docs-content">
         <div class="container">
-        <div class="alert alert-primary mt-2" role="alert">
-						  Welcome! here, you can create new versions and manage pages and categories. Need help? <u>Check out our demo!</u>
-						</div>
+        <div class="callout-block callout-block-info">
+                            
+                            <div class="content">
+                                <h4 class="callout-title">
+	                                <span class="callout-icon-holder mr-1">
+		                                 <i class="fas fa-bullhorn"></i>
+		                            </span>
+	                                Welcome!
+	                            </h4>
+                                <p>You can create new versions and manage pages and categories. Need help? <u>Check out our demo!</u>
+</p>
+                            </div><!--//content-->
+                        </div>
                                     <page-component page-value="{{ $page }}">
                 <section-panel-component version="{{ $currentVersion->id }}" page="{{ $page->id }}" section-list="{{ $page->sections }}"></section-panel-component>
             </page-component>
