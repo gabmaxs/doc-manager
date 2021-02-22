@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["name", "title"];
+    protected $fillable = ["name", "title", "icon"];
 
     public function pages() {
         return $this->belongsToMany(Page::class);
