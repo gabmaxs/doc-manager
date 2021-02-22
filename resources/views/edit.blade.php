@@ -20,7 +20,7 @@
                         @if ($category->is($page->category))
                             <li class="nav-item"><a class="nav-link scrollto active" href="#{{ $pageMenu->title }}">{{$pageMenu->name}}</a> <span class="btn btn-sm"><i class="fa fa-trash trash-red"></i></span></li>
                         @else
-                            <li class="nav-item"><a class="nav-link" href="{{ route('docs',['version' => $currentVersion, 'page' => $pageMenu]) . "#$pageMenu->title" }}">{{$pageMenu->name}}</a> <span class="btn btn-sm"><i class="fa fa-trash trash-red"></i></span></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('edit',['version' => $currentVersion, 'page' => $pageMenu])}}">{{$pageMenu->name}}</a> <span class="btn btn-sm"><i class="fa fa-trash trash-red"></i></span></li>
                         @endif
                     @endforeach
                     <li class="nav-item">
