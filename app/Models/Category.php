@@ -27,6 +27,13 @@ class Category extends Model
         return $query->first();
     }
 
+    public function delete() {
+        // EU QUERO DELETAR AS PAGINAS  DESSA CATEGORIA TBM?
+        // Page::destroy($this->pages()->select('id')->get());
+        $this->pages()->detach();
+        parent::delete();
+    }
+
     public function createPageWithSection(Version $version) {
         $page = Page::create([
             "name" => "First Page for {$this->attributes['name']}",
