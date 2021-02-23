@@ -34,7 +34,11 @@
                 <header class="docs-header">
                     <h1 class="docs-heading">{{ $page->name }}</h1>
                     <section class="docs-intro">
-                        <p>Section intro goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque finibus condimentum nisl id vulputate. Praesent aliquet varius eros interdum suscipit. Donec eu purus sed nibh convallis bibendum quis vitae turpis. Duis vestibulum diam lorem, vitae dapibus nibh facilisis a. Fusce in malesuada odio.</p>
+                        <ul class="nav list-unstyled flex-column">
+                            @foreach ($page->sections as $section)
+                                <li class="nav-item"><a class="nav-link scrollto"  href="{{ "#".$section->title }}">{{ $section->name }}</a></li>
+                            @endforeach
+                        </ul>
                     </section><!--//docs-intro-->
                 </header>
                 @foreach ($page->sections as $section)
