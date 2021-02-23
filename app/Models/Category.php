@@ -26,4 +26,17 @@ class Category extends Model
     public function scopeDefault($query) {
         return $query->first();
     }
+
+    public function createPageWithSection(Version $version) {
+        $page = Page::create([
+            "name" => "First Page for {$this->attributes['name']}",
+            "title" => "First Page for {$this->attributes['name']}"
+        ]);
+        $this->pages()->attach($page->id, ["sequence" => 1]);
+
+        $section = $page->createSection($version);
+        $section->versions()->attach($version->id);
+
+        return $page;
+    }
 }
