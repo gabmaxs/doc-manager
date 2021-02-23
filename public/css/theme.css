@@ -17645,7 +17645,6 @@ a.theme-link:hover {
 .docs-article .docs-section {
   padding: 2rem 0;
   border-bottom: 1px solid #e7e9ed;
-  cursor: move;
 }
 
 .docs-article .docs-section p:last-child {
@@ -17805,6 +17804,10 @@ a.theme-link:hover {
     display: block;
     padding-top: 0.5rem;
   }
+}
+
+.drag-cursor {
+  cursor: move !important;
 }
 
 

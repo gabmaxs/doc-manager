@@ -68,3 +68,6 @@ $theme-colors: (
 /*************************** Theme Styles Section ****************************/
 @import "./theme/styles.scss";
 
+.drag-cursor {
+  cursor: move !important;
+}
