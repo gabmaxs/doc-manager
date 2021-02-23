@@ -15,7 +15,7 @@ class SectionController extends Controller
     }
     
     public function editSection(Request $request, Section $section) {
-        $section->fill($request->only('content', 'name'));
+        $section->fill($request->only('content', 'name', 'title'));
         $section->save();
         return response()->json($section);
     }

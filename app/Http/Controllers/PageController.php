@@ -16,7 +16,7 @@ class PageController extends Controller
     }
 
     public function editPage(Request $request, Page $page) {
-        $page->fill($request->only('name'));
+        $page->fill($request->only('name','title'));
         $page->save();
         return response()->json($page);
     }
