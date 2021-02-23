@@ -30,4 +30,9 @@ class CategoryController extends Controller
         // TEM Q VER A ORDEM DAS CATEGORIAS
         return response()->json($category);
     }
+
+    public function deleteCategory(Category $category) {
+        $category->delete();
+        return response()->json()->setStatusCode(204);
+    }
 }

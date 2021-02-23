@@ -38,3 +38,4 @@ Route::delete('/page/{page}', [App\Http\Controllers\PageController::class, 'dele
 Route::put('/category/{category}', [App\Http\Controllers\CategoryController::class, 'editCategory']);
 Route::get("/category/{category}/page", [App\Http\Controllers\CategoryController::class, 'getPages']);
 Route::post('/version/{version}/category', [App\Http\Controllers\CategoryController::class, 'addCategory']);
+Route::delete('/category/{category}', [App\Http\Controllers\CategoryController::class, 'deleteCategory']);
