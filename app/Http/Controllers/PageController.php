@@ -33,13 +33,8 @@ class PageController extends Controller
 
     public function addPage(Request $request, Version $version, Category $category) {
         $page = Page::create($request->get('page'));
-        $section = Section::create([
-            'name' => "Section for $page->name",
-            'title' => "Section for $page->name",
-            "content" => "Content here..."
-        ]);
-        $page->sections()->attach($section->id, ["sequence" => 1]);
         $page->categories()->attach($category->id, ["sequence" => $request->get('position')]);
+        $section = $page->createSection();
         $section->versions()->attach($version->id);
         return response()->json($page);
     }

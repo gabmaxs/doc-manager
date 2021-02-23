@@ -32,4 +32,15 @@ class Page extends Model
         $this->sections()->detach();
         parent::delete();
     }
+
+    public function createSection() {
+        $section = Section::create([
+            'name' => "Section for {$this->attributes['name']}",
+            'title' => "Section for {$this->attributes['name']}",
+            "content" => "Content here..."
+        ]);
+
+        $this->sections()->attach($section->id, ["sequence" => 1]);
+        return $section;
+    }
 }
