@@ -33,7 +33,7 @@ class Page extends Model
         parent::delete();
     }
 
-    public function createSection() {
+    public function createSection(Version $version) {
         $section = Section::create([
             'name' => "Section for {$this->attributes['name']}",
             'title' => "Section for {$this->attributes['name']}",
@@ -41,6 +41,8 @@ class Page extends Model
         ]);
 
         $this->sections()->attach($section->id, ["sequence" => 1]);
+        $section->versions()->attach($version->id);
+        
         return $section;
     }
 }
