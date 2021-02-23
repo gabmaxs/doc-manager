@@ -1,16 +1,18 @@
 <template>
-    <ul class="section-items list-unstyled nav flex-column pb-3">
-        <li>
-            <draggable v-model="categories" @start="drag=true" @end="drag=false" @change="handleChange">
-                <CategoryComponent :version="version" v-for="category in categories" :key="category.id" :category="category"></CategoryComponent>
-            </draggable>
-            <!-- <ModalComponent @close="closeModal" @delete="deleteSection" :section="selectedCategory" v-if="isModalVisible"></ModalComponent> -->
-        </li>
-        <li v-if="!wantAddCategory" class="nav-item section-title mt-3">
-            <a @click="wantAddCategory = true" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> New Category</a>
-        </li>
-        <NewCategoryComponent v-if="wantAddCategory" @save="addCategory" @cancel="wantAddCategory = false"></NewCategoryComponent>
-    </ul>
+    <div>
+        <ul class="section-items list-unstyled nav flex-column pb-3">
+            <li>
+                <draggable v-model="categories" @start="drag=true" @end="drag=false" @change="handleChange">
+                    <CategoryComponent @delete="wantDelete" :version="version" v-for="category in categories" :key="category.id" :category="category"></CategoryComponent>
+                </draggable>
+            </li>
+            <li v-if="!wantAddCategory" class="nav-item section-title mt-3">
+                <a @click="wantAddCategory = true" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> New Category</a>
+            </li>
+            <NewCategoryComponent v-if="wantAddCategory" @save="addCategory" @cancel="wantAddCategory = false"></NewCategoryComponent>
+        </ul>
+        <ModalComponent @close="closeModal" @delete="deleteCategory" :item="selectedCategory" v-if="isModalVisible"></ModalComponent>
+    </div>
 </template>
 
 <script>
@@ -75,7 +77,27 @@ export default {
             {
                 console.log(e.response)
             }
-        }
+        },
+        async closeModal() {
+            this.isModalVisible = false
+            this.selectedCategory = {}
+        },
+        async deleteCategory(category_id) {
+            try {
+                await this.closeModal()
+                const response = await axios.delete(`/category/${category_id}`)
+                this.categories = this.categories.filter(category => category.id != category_id)
+                this.updateSequence()
+            }
+            catch(e)
+            {
+                console.log(e.response)
+            }
+        },
+        async wantDelete(selectedCategory) {
+            this.selectedCategory = selectedCategory
+            this.isModalVisible = true
+        },
     },
     created() {
         const categoriesObj = JSON.parse(this.categoryList)

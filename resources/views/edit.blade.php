@@ -31,5 +31,24 @@
         </div> 
         
     </div>
+    <div class="modal" id="deleteModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Delete item</h5>
+              <button type="button" id="modalCloseHeaderButton" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p id="modalContent"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="modalCloseButton" class="btn btn-secondary">Close</button>
+              <button type="button" id="modalDeleteButton" class="btn btn-danger" data-dismiss="modal">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </div><!--//docs-wrapper-->
 @endsection

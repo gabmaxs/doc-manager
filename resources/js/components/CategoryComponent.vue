@@ -8,7 +8,7 @@
                 {{category.name}} 
             </a> 
             <span class="btn btn-sm" @click="wantEdit = true"><i class="fas fa-edit"></i></span>
-            <span class="btn btn-sm"><i class="fas fa-trash"></i></span>
+            <span class="btn btn-sm" @click="wantDeleteCategory"><i class="fas fa-trash"></i></span>
         </div>
 
         <form v-if="wantEdit">
@@ -63,6 +63,9 @@ export default {
                 console.log("Error")
                 console.log(e)
             }
+        },
+        wantDeleteCategory() {
+            this.$emit("delete", this.category)
         }
     }
 }
