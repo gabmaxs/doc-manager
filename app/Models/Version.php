@@ -27,10 +27,7 @@ class Version extends Model
     }
 
     public function categories() {
-        $pages = $this->pages()->pluck("pages.id")->all();
-        return Category::whereHas('pages', function ($query) use ($pages) {
-            $query->whereIn('pages.id', $pages);
-        });
+        return $this->belongsToMany(Category::class)->withPivot('sequence')->orderByPivot('sequence');;
     }
 
     public function scopeLast($query) {

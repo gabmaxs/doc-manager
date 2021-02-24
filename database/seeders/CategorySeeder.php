@@ -27,9 +27,15 @@ class CategorySeeder extends Seeder
             [3 => ["sequence" => 1]]
         ];
 
+        $versions = [
+            [1 => ['sequence' => 2]],
+            [1 => ['sequence' => 1]]
+        ];
+
         foreach($data as $key => $category) {
             $categ = Category::create($category);
             $categ->pages()->attach($pages[$key]);
+            $categ->versions()->attach($versions[$key]);
         }
     }
 }

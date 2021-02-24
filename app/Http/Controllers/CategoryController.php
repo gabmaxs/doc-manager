@@ -27,7 +27,7 @@ class CategoryController extends Controller
     public function addCategory(Request $request, Version $version) {
         $category = Category::create($request->get('category'));
         $category->createPageWithSection($version);
-        // TEM Q VER A ORDEM DAS CATEGORIAS
+        $category->versions()->attach($version->id, ["sequence" => $request->get('position')]);
         return response()->json($category);
     }
 

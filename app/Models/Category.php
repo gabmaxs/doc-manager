@@ -15,6 +15,10 @@ class Category extends Model
         return $this->belongsToMany(Page::class)->withPivot('sequence')->orderByPivot('sequence');;
     }
 
+    public function versions() {
+        return $this->belongsToMany(Version::class)->withPivot('sequence')->orderByPivot('sequence');;
+    }
+
     public function setTitleAttribute($value) {
         $this->attributes['title'] = strtolower(str_replace(" ","-",$value));
     }
