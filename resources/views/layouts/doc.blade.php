@@ -57,7 +57,7 @@
                                 <a class="dropdown-item" href="{{ route('redirect',['version' => $version]) }}">{{ substr($version->name,1) }}</a>        
                             @endforeach
                             @if(Auth::check())
-                                <a class="dropdown-item btn-block d-flex justify-content-center align-items-center add-version"><i class="fas fa-plus mr-2"></i> New version </a>
+                                <a data-toggle="modal" data-target="#exampleModal" class="dropdown-item btn-block d-flex justify-content-center align-items-center add-version"><i class="fas fa-plus mr-2"></i> New version </a>
                             @endif
                         </div>
                     </div>
@@ -90,6 +90,89 @@
 	    </div>
 	    
     </footer>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Version</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form>
+      <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-primary active btn-sm">
+                            <input type="radio" name="options" id="scratch" onclick="showScratch()" autocomplete="off" checked> New version from scratch
+                        </label>
+                        <label class="btn btn-primary btn-sm">
+                            <input type="radio" name="options" id="older" onclick="showOlder()" autocomplete="off"> New version from an older version
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-lg-12" id="fromScratch" style="display:none">
+                    <div class="form-group col-lg-12">
+                    
+<label>Version: </label>
+                    <div class="input-group mb-3">
+  <input type="number" class="form-control" placeholder="Example: 2.0" >
+  <div class="input-group-append">
+    <button class="btn btn-success" type="button">Get New Recommended Version</button>
+  </div>
+</div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-12" id="fromOlder" style="display:none">
+                    <div class="form-group col-lg-12">
+                        <label >Version:</label>
+                        <select class="custom-select" id="validationCustom04" required>
+                            <option selected disabled value="">Choose...</option>
+                            @foreach($versions as $version)
+                                <option value="{{$version->id}}"> {{ substr($version->name,1) }} </option>
+                            @endforeach
+
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-12">
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary btn-sm">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    function showScratch() {
+        var scratch = document.getElementById("fromScratch");
+        var older = document.getElementById("fromOlder");
+        scratch.style.display = "block"
+        older.style.display = "none"
+    }
+
+    function showOlder() {
+        var scratch = document.getElementById("fromScratch");
+        var older = document.getElementById("fromOlder");
+        older.style.display = "block"
+        scratch.style.display = "none"
+    }
+
+</script>
 
     
     <!-- Javascript -->   
