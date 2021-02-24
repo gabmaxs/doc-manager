@@ -118,14 +118,19 @@
                 <div class="col-lg-12" id="fromScratch" style="display:none">
                     <div class="form-group col-lg-12">
                     
-<label>Version: </label>
-                    <div class="input-group mb-3">
-  <input type="number" class="form-control" placeholder="Example: 2.0" >
-  <div class="input-group-append">
-    <button class="btn btn-success" type="button">Get New Recommended Version</button>
-  </div>
-</div>
+                        <label>Version: </label>
+                                            <div class="input-group mb-3">
+                        <input type="number" class="form-control" placeholder="Example: 2.0" >
+                        <div class="input-group-append">
+                            <button class="btn btn-success" type="button">Get New Recommended Version</button>
+                        </div>
+                        </div>
                     </div>
+
+                    <div class="form-group col-lg-12">
+
+                <button type="button" class="btn btn-primary btn-sm btn-block">Save changes</button>
+                </div>
                 </div>
 
 
@@ -142,16 +147,18 @@
                     </div>
                     <div class="form-group col-lg-12">
 
+                    <button type="button" class="btn btn-primary btn-sm btn-block">Save changes</button>
 
                     </div>
+                    
                 </div>
+                
             </div>
         </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary btn-sm">Save changes</button>
       </div>
     </div>
   </div>
