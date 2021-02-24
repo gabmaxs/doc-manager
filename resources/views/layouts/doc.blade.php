@@ -45,15 +45,20 @@
 		                <li class="list-inline-item"><a href="#"><i class="fab fa-slack fa-fw"></i></a></li>
 		                <li class="list-inline-item"><a href="#"><i class="fab fa-product-hunt fa-fw"></i></a></li>
 		            </ul><!--//social-list-->
+
                     <div class="dropdown">
                         <a class="btn btn-primary dropdown-toggle " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ $currentVersion->name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <h6 class="dropdown-header">Versions</h6>
+                            <h6 class="dropdown-header">Versions </h6>
+
                             @foreach ($versions as $version)
                                 <a class="dropdown-item" href="{{ route('redirect',['version' => $version]) }}">{{ substr($version->name,1) }}</a>        
                             @endforeach
+                            @if(Auth::check())
+                                <a class="dropdown-item btn-block d-flex justify-content-center align-items-center add-version"><i class="fas fa-plus mr-2"></i> New version </a>
+                            @endif
                         </div>
                     </div>
 	            </div><!--//docs-top-utilities-->

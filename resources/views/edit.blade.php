@@ -10,6 +10,8 @@
         </div>
         <nav id="docs-nav" class="docs-nav navbar">
             <category-panel-component version="{{ $currentVersion->id }}" category-list="{{$categories}}"></category-panel-component>
+        
+            
         </nav>
     </div><!--//docs-sidebar-->
     <div class="docs-content">

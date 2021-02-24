@@ -17358,6 +17358,21 @@ a.theme-link:hover {
   transition: all 0.5s;
 }
 
+.add-version {
+  border-radius: 5px;
+  border: 1px solid #3873a6;
+  background-color: transparent;
+  cursor: pointer;
+  color: #3873a6;
+  transition: background-color 0.5s;
+} 
+
+.add-version:hover {
+  background-color: #3873a6;
+  color: white;
+  transition: all 0.5s;
+}
+
 .docs-overview .card {
   border-color: #e7e9ed;
   position: relative;
