@@ -35,4 +35,14 @@ class CategoryController extends Controller
         $category->delete();
         return response()->json()->setStatusCode(204);
     }
+
+    public function editCategorySequence(Request $request, Version $version) {
+        $categories = $request->only('categories')['categories'];
+        foreach($categories as $key => $category) {
+            $version->categories()->updateExistingPivot($category['id'], [
+                'sequence' => $key+1,
+            ]);
+        }
+        return response()->json()->setStatusCode(204);
+    }
 }
