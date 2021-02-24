@@ -1,7 +1,7 @@
 <template>
     <ul class="collapse list-unstyled" :id="collapseId">
         <draggable v-model="pages" @start="drag=true" @end="drag=false" @change="handleChange">
-            <MenuPageComponent v-for="page in pages" @delete="wantDelete" :key="page.id" :page="page"></MenuPageComponent>
+            <MenuPageComponent :delete-disabled="pages.length < 2" v-for="page in pages" @delete="wantDelete" :key="page.id" :page="page"></MenuPageComponent>
         </draggable>
         <li v-if="!wantAddPage" class="nav-item">
             <a @click="wantAddPage = true" class="btn btn-light btn-sm"><i class="fas fa-plus"></i> New Page</a>

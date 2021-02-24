@@ -3,16 +3,16 @@
         <a class="nav-link active" :href="pageLink">
             {{page.name}}
         </a> 
-        <span @click="wantDelete" class="btn btn-sm">
+        <button :disabled="deleteDisabled" @click="wantDelete" class="btn btn-sm">
             <i class="fa fa-trash trash-red"></i>
-        </span>
+        </button>
     </li>  
 </template>
 
 <script>
 export default {
     name: "MenuPageComponent",
-    props: ["page"],
+    props: ["page", "deleteDisabled"],
     methods: {
         wantDelete() {
             this.$emit("delete", this.page)

@@ -18,7 +18,7 @@
             <button @click.prevent="wantEditContent = false" class="btn btn-danger">Cancelar</button>
         </form>
         <div class="d-flex justify-content-lg-end">
-            <button @click="wantDelete" class="btn btn-danger"><i class="fa fa-trash"></i> Delete {{section.name}}</button>
+            <button :disabled="deleteDisabled" @click="wantDelete" class="btn btn-danger"><i class="fa fa-trash"></i> Delete {{section.name}}</button>
         </div>
     </section><!--//section-->
 </div>
@@ -29,7 +29,7 @@
 
     export default {
         name: "SectionComponent",
-        props: ["section"],
+        props: ["section", "deleteDisabled"],
         data() {
             return {
                 wantEditContent: false,

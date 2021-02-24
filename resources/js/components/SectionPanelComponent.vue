@@ -1,7 +1,7 @@
 <template>
     <div>
         <draggable v-model="sections" @start="drag=true" @end="drag=false" @change="handleChange">
-            <SectionComponent @delete="wantDelete" v-for="section in sections" :key="section.id" :section="section"></SectionComponent>
+            <SectionComponent :delete-disabled="sections.length < 2" @delete="wantDelete" v-for="section in sections" :key="section.id" :section="section"></SectionComponent>
             <button slot="footer" v-if="!wantAddSection" @click="wantAddSection = true" class="btn-block d-flex justify-content-center align-items-center add-section">New Section<i class="fas fa-plus ml-3"></i></button>
         </draggable>
         <NewSectionComponent v-if="wantAddSection" @save="addSection" @cancel="wantAddSection = false"></NewSectionComponent>
